@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 //import logo from './logo.svg';
 import './App.css';
 
@@ -13,6 +13,10 @@ const DIFFERENT_GIFS = [
 
 function App() {
   const [gifs, setGifs] = useState(GIFS)
+
+  useEffect(function (){
+    setGifs(DIFFERENT_GIFS)
+  }, [])
   
   return (
     <div className="App">
@@ -20,7 +24,7 @@ function App() {
         {
           gifs.map(singleGif => <img src={singleGif} />)
         }
-        <button onClick = {() => setGifs(DIFFERENT_GIFS)}>Cambiar gifs </button> {/* Al hacer click se cambia el estado*/}
+        {/* <button onClick = {() => setGifs(DIFFERENT_GIFS)}>Cambiar gifs </button> Al hacer click se cambia el estado*/}
       </section>
     </div>
   );
