@@ -10,7 +10,7 @@ export default function getGifs({keyword = 'elephants'} = {}){
         const {data = [] } = response //data siempre regresa un array
         if (Array.isArray(data)){
              const gifs = data.map(image =>{
-             const { images, title, id} = image
+             const {images, title, id} = image
              const { url } = images.downsized_medium
              return { title, id, url}
            }) 
