@@ -1,38 +1,27 @@
 import React, {useEffect, useState} from 'react';
 //import logo from './logo.svg';
 import './App.css';
-
-const apiURL = 'https://api.giphy.com/v1/gifs/search?api_key=g6HbOEbnQ5Sst0m77Pz5VXeYsDC3RB05&q=cats&limit=10&offset=0&rating=g&lang=en'
-
-//const GIFS = [
-  //'https://media0.giphy.com/media/OmK8lulOMQ9XO/200w.webp?cid=ecf05e476g7mw9k71r4ysb0ffn3hn53aqzx3mzccj2lqozfr&rid=200w.webp&ct=g',
-  //'https://media2.giphy.com/media/XNdoIMwndQfqE/200w.webp?cid=ecf05e47205iwn5kylg5dd4gz26t4utltgb8xt5mkgsdzx2x&rid=200w.webp&ct=g']
-
-
-//const DIFFERENT_GIFS = [
-  //'https://media0.giphy.com/media/oz0iZ8vYdgeTVMtFAe/giphy.webp?cid=ecf05e47qawvbwpixaa5g2ie6e0yroslu8w2wmdemcqrb9bj&rid=giphy.webp&ct=g']
-
+import getGifs from './services/getGifs';
 
 function App() {
   const [gifs, setGifs] = useState([])
 
   useEffect(function (){
-    console.log('actualizando los gifs')
-    
-    fetch(apiURL)
-      .then(res => res.json())
-      .then(response => {
-        const {data} = response
-        const gifs = data.map(image => image.images.downsized_medium.url)
-        setGifs(gifs)
-      })
+    getGifs({keyword: 'dog'}).then(gifs => setGifs(gifs))
   }, [])
   
   return (
     <div className="App">
       <section className="App-content">
         {
-          gifs.map(singleGif => <img src={singleGif} />)
+          gifs.map(singleGif => {
+            return <div>
+              <h4>{singleGif.title}</h4>
+              <small>{singleGif.id} </small>
+              <img alt ={singleGif.title} src={singleGif.url} />
+            </div>
+          })
+          
         }
         {/* <button onClick = {() => setGifs(DIFFERENT_GIFS)}>Cambiar gifs </button> Al hacer click se cambia el estado*/}
       </section>
