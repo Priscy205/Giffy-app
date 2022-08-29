@@ -25,3 +25,7 @@ a{
     display: flex;
     flex-direction: center;
 }
+
+i{
+    font-size: 70 px;
+}
