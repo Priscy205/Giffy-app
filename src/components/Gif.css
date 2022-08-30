@@ -1,18 +1,21 @@
 .Gif{
-    border: 1px solid white;
-    border-radius: 60px;
     display: flex;
     flex-direction: column;
-    margin:  16px;
-    padding: 32px;
-    width: 90%;
+    margin:  5px;
+    padding: 2px;
+    width: 50%;
     height: 250;
     color: beige;
     text-decoration: none;
 }
 
 .Gif h4 {
+    font-size: 20px;
     margin: 0;
+    text-decoration: none;
+    position: absolute;
+    text-shadow: 0 0 8px black;
+    width: 300;
 }
 a{
     justify-content: center;
@@ -21,7 +24,7 @@ a{
 
 .Gif img {
     object-fit:contain;
-    width: 300px;
+    width: 500px;
     display: flex;
     flex-direction: center;
 }

@@ -25,6 +25,7 @@ a{
   font-size: 32px;
 }
 
-img{
-  width: 150px;
+img.App-logo{
+  margin:50px;
+  width: 160px;
 }
