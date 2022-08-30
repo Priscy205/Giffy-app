@@ -1,16 +1,17 @@
 import React, {useState} from "react"
 import {Link, useLocation} from "wouter"
+import './index.css';
 
 const POPULAR_GIFS = ["cat", "elephant", "dog", "zebra", "lion"]
 
 export default function Home(){
     const [keyword, setKeyword] = useState('')
-    const [path, pushlocation] = useLocation()
+    const [path, pushLocation] = useLocation()
 
     const handleSubmit = evt => {
         evt.preventDefault()
         //navegar a otra ruta
-        console.log(keyword)
+        pushLocation(`/search/${keyword}`)
     }
 
     const handleChange = evt =>{
@@ -20,12 +21,13 @@ export default function Home(){
     return(
         <>
             <form onSubmit ={handleSubmit} >
-                <input placeholder= "Search a gif here..."onChange={handleChange} type='text' value={keyword} />
+                <input id="buscar" placeholder= "Search a gif here..." onChange={handleChange} type='text' value={keyword} />
+                <button id="boton">Buscar</button>
             </form>
-            <h3 className="App-title">Gifs de animales</h3>
+            <h3 className="App-title">Gifs populares</h3>
             <ul>
                 {POPULAR_GIFS.map((popularGif)=> (
-                    <li key={pupularGif}>
+                    <li key={popularGif}>
                         <Link to={`/search/${popularGif}`}>Gifs de {popularGif} </Link>
                     </li>
                 ))}
