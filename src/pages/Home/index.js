@@ -4,9 +4,7 @@ import './index.css';
 import ListOfGifs from "../../components/ListOfGifs";
 import {useGifs} from '../../hooks/useGifs'
 import Category from '../../components/Category'
-
-
-const POPULAR_GIFS = ["Avengers", "Gatos", "Matrix", "Groot", "Princesas"]
+import TrendingSearches from "../../components/TrendingSearches";
 
 export default function Home(){
     const [keyword, setKeyword] = useState('')
@@ -29,17 +27,6 @@ export default function Home(){
                 <input id="buscar" placeholder= "Search a gif here..." onChange={handleChange} type='text' value={keyword} />
                 <button id="boton">Buscar</button>
             </form>
-            {/* 
-            <h3 className="App-title">Última búsqueda</h3>
-            <ListOfGifs gifs={gifs}/>
-            <h3 className="App-title">Gifs de animales</h3>
-            <ul>
-                {POPULAR_GIFS.map((popularGif)=> (
-                    <li key={popularGif}>
-                        <Link to={`/search/${popularGif}`}>Gifs de {popularGif} </Link>
-                    </li>
-                ))}
-            </ul>*/}
 
             <div className="App-main">
                 <div className="App-results">
@@ -47,14 +34,7 @@ export default function Home(){
                 <ListOfGifs gifs = {gifs}/>
                 </div>
                 <div className="App-category">
-                    <Category
-                        name="Categorias populares"
-                        options={POPULAR_GIFS}
-                    />
-                    <Category
-                        name="Mascotas"
-                        options={['Perros', 'Gatos', 'Hamster']}
-                    />
+                    <TrendingSearches />
                 </div>
             </div>
         </>
