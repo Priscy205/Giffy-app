@@ -10,17 +10,19 @@ export default function Home(){
     const [keyword, setKeyword] = useState('')
     const [path, pushLocation] = useLocation()
 
+    //<------------------------------------
     const [loading, setLoading]  = useState(false)
     const [gifs, setGifs] = useState([])
 
     useEffect(function(){
         setLoading(true)
-        getGifs({keyword: 'caballos'})
+        getGifs({keyword: 'gatitos'})
         .then(gifs =>{
             setGifs(gifs)
             setLoading(false)
         })
     }, [keyword])
+    //<------------------------------------
 
     const handleSubmit = evt => {
         evt.preventDefault()
