@@ -3,6 +3,8 @@ import {Link, useLocation} from "wouter"
 import './index.css';
 import getGifs from '../../services/getGifs'
 import ListOfGifs from "../../components/ListOfGifs";
+import {useGifs} from '../../hooks/useGifs'
+
 
 const POPULAR_GIFS = ["gatos", "elefantes", "perros", "pandas", "leon"]
 
@@ -10,19 +12,7 @@ export default function Home(){
     const [keyword, setKeyword] = useState('')
     const [path, pushLocation] = useLocation()
 
-    //<------------------------------------
-    const [loading, setLoading]  = useState(false)
-    const [gifs, setGifs] = useState([])
-
-    useEffect(function(){
-        setLoading(true)
-        getGifs({keyword: 'gatitos'})
-        .then(gifs =>{
-            setGifs(gifs)
-            setLoading(false)
-        })
-    }, [keyword])
-    //<------------------------------------
+    const {loading, gifs} = useGifs()
 
     const handleSubmit = evt => {
         evt.preventDefault()
