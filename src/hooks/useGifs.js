@@ -5,7 +5,7 @@ export function useGifs ({keyword} = {keyword: null}) {
     const [loading, setLoading]  = useState(false)
     const [gifs, setGifs] = useState([])
 
-    useEffect(function(){
+    useEffect(function(){   //useEffect es una funcion que se ejecuta cada vez que se renderiza el componente
         setLoading(true)
         //recuperamos la keyword del localStorage
         const keywordToUse = keyword || localStorage.getItem('lastKeyword') || 'gatitos'

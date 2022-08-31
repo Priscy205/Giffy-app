@@ -4,12 +4,19 @@ import SearchResults from './pages/SearchResults'
 import Home from './pages/Home'
 import Detail from './pages/Detail'
 import logo from './assets/logo.png'
+import StaticContext from './context/StaticContext'
 
 import {Link, Route } from "wouter"
 
 export default function App() {
 
   return (
+    <StaticContext.Provider value={
+      {
+        name: 'Priscy', 
+        EstoyAprendiendoReact: true
+        }}>  {/*todas las rutas que están por debajo pueden usar este proovedor,  Context es un objeto en donde se le pueden guardar cosas*/}
+
     <div className="App">
       <section className="App-content">
         <h1>Horsea, tu buscador de gifs</h1>
@@ -28,6 +35,7 @@ export default function App() {
           path="/gif/:id" />
       </section>
     </div>
+    </StaticContext.Provider>
   );
 }
  
