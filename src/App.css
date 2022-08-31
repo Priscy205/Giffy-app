@@ -1,5 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=DynaPuff:wght@600&display=swap');
+
 .App {
   text-align: center;
+}
+
+h1 {
+  font-family: 'DynaPuff', cursive;
 }
 
 
@@ -18,6 +24,7 @@
 
 button{
   font-size : 20px;
+  height: 50px;
 }
 
 a{
