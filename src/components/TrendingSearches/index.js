@@ -17,6 +17,7 @@ export default function LazyTrending (){
     const elementRef = useRef() //permite guardar valores que entre renderizados no cambia no renderiza el componente
 
     useEffect (function (){
+        let observer
         const onChange = (entries, observer) =>{
             const el =entries[0]
             if(el.isIntersecting){
@@ -24,10 +25,19 @@ export default function LazyTrending (){
                 observer.disconnect()
             }
         }
-        const observer = new IntersectionObserver(onChange,{
-            rootMargin: '100px'
-        })
-        observer.observe(elementRef.current) //current nos da el valor actual de esa referencia
+
+        //un polyfill es una pequeña biblioteca que le agrega funcionalidades que falta al navegador
+        Promise.resolve(
+            typeof IntersectionObserver != 'undefined'
+            ? IntersectionObserver
+            : import ('intersection-observer')
+            ).then(()=>{
+                observer = new IntersectionObserver(onChange,{
+                rootMargin: '100px'
+            })
+            observer.observe(elementRef.current) //current nos da el valor actual de esa referencia
+            })
+            return () => observer && observer.disconnect()
     })
 
     return <div ref={elementRef}>
