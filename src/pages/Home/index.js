@@ -10,10 +10,10 @@ export default function Home(){
     const [path, pushLocation] = useLocation()
     const {loading, gifs} = useGifs()
 
-    const handleSubmit =({keyword}) => {
+    const handleSubmit = (({keyword}) => {
         //navegar a otra ruta
         pushLocation(`/search/${keyword}`)
-    }
+    }, [pushLocation])
 
     return(
         <>
