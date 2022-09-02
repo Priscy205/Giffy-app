@@ -2,7 +2,6 @@
 
 .App {
   text-align: center;
-  width: 100%;
 }
 
 h1 {
@@ -18,9 +17,9 @@ h1 {
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  padding: 16px;
   color: white;
-  
+  padding: 16px;
+  text-align: left;
 }
 
 button{
@@ -35,4 +34,26 @@ a{
 img.App-logo{
   margin:50px;
   width: 160px;
+}
+
+.App-results {
+  flex-shrink: 2;
+}
+
+.App-category {
+  margin-bottom: 25px;
+  width: 100%;
+}
+
+@media screen and (min-width: 640px){
+  .App-main{
+    flex-direction: initial;
+  }
+
+  .App-category{
+    padding: 0 2em;
+    position: sticky;
+    top: 0;
+    width: 40%;
+  }
 }

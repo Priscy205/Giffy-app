@@ -18,7 +18,7 @@ export default function useNearScreen ({distance = '100px'}={}){
 
         //un polyfill es una pequeña biblioteca que le agrega funcionalidades que falta al navegador
         Promise.resolve(
-            typeof IntersectionObserver != 'undefined'
+            typeof IntersectionObserver !== 'undefined'
             ? IntersectionObserver
             : import ('intersection-observer')
             ).then(()=>{

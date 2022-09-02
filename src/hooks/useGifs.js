@@ -7,7 +7,7 @@ const INITIAL_PAGE = 0
 export function useGifs ({keyword} = {keyword: null}) {
     const [loading, setLoading]  = useState(false)
     const [loadingNextPage, setLoadingNextPage] = useState(false)
-    const [page, setPage] = useState (0)
+    const [page, setPage] = useState (INITIAL_PAGE)
     const {gifs, setGifs} = useContext(GifsContext)
 
     //recuperamos la keyword del localStorage
@@ -26,7 +26,7 @@ export function useGifs ({keyword} = {keyword: null}) {
     }, [keyword, keywordToUse, setGifs])
 
     useEffect(function (){
-        if (page == INITIAL_PAGE) return
+        if (page === INITIAL_PAGE) return
 
         setLoadingNextPage(true)
         getGifs({keyword: keywordToUse, page})

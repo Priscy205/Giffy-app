@@ -1,34 +1,32 @@
 .Gif{
-    display: flex;
-    flex-direction: column;
-    margin:  3px;
-    padding: 3px;
-    width: 100%;
-    height: 150;
-    color: beige;
-    text-decoration: none;
-    position: relative;
+    margin-bottom:.5em;
 }
 
+.Gif-link {
+    color: #000;
+    display: block;
+    text-decoration: none;
+    position: relative;
+    width: 100%;
+    /*max-height: 200px;
+    overflow: hidden;*/
+  }
+
 .Gif h4 {
-    font-size: 20px;
-    margin: 0;
+    font-size: 12px;
     position: absolute;
-    text-shadow: 0 0 8px black;
-    width: 300;
-}
-a{
-    justify-content: center;
-    align-items: center;
+    background: rgba(0, 0, 0, .3);
+    bottom: 0;
+    color: #fff;
+    margin: 0;
 }
 
 .Gif img {
-    object-fit:contain;
     width: 100%;
-    display: flex;
-    flex-direction: center;
+    object-fit: contain;
+    vertical-align: top;
 }
 
 i{
-    font-size: 70 px;
+    font-size: 80 px;
 }
