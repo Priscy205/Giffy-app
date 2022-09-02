@@ -6,8 +6,11 @@ import Detail from './pages/Detail'
 import logo from './assets/logo.png'
 import StaticContext from './context/StaticContext'
 import {GifsContextProvider} from './context/GifsContext'
-
 import {Link, Route } from "wouter"
+import { isCompositeComponentWithType } from 'react-dom/test-utils';
+import { Suspense } from 'react';
+
+const HomePage = React.lazy(()=>import('./pages/Home'))
 
 export default function App() {
   return (
@@ -18,6 +21,7 @@ export default function App() {
         }}>  {/*todas las rutas que están por debajo pueden usar este proovedor,  Context es un objeto en donde se le pueden guardar cosas*/}
 
     <div className="App">
+      <Suspense fallback={null}>
       <section className="App-content">
         <h1>Horsea, tu buscador de gifs</h1>
           <Link to='/'>
@@ -25,7 +29,7 @@ export default function App() {
           </Link>
         <GifsContextProvider>
         <Route
-          component={Home}
+          component={HomePage}
           path="/" /> 
         <Route
           component={SearchResults}
@@ -35,6 +39,7 @@ export default function App() {
           path="/gif/:id" />
         </GifsContextProvider>
       </section>
+      </Suspense>
     </div>
     </StaticContext.Provider>
   );
