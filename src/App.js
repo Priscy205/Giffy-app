@@ -37,6 +37,11 @@ export default function App() {
         <Route
           component={Detail}
           path="/gif/:id" />
+        <Route
+          component={()=>
+          <h1>404 ERROR :C</h1>}
+          path="/404"
+        />
         </GifsContextProvider>
       </section>
       </Suspense>
