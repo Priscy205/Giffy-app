@@ -1,10 +1,12 @@
 import React, {useContext} from 'react'
 import Gif from '../../components/Gif'
 import useSingleGif from '../../hooks/useSingleGif'
+import Spinner from '../../components/Spinner'
 
 export default function Detail({params}){
-    const {gif} = useSingleGif({id: params.id})
+    const {gif, isLoading, isError} = useSingleGif({id: params.id})
 
+    if (isLoading) return <Spinner />
     if (!gif) return null
     
     return <>
