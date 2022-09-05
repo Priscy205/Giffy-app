@@ -30,7 +30,7 @@ export default function useNearScreen ({distance = '100px', externalRef, once=tr
                 rootMargin: distance
             })
 
-            observer.observe(element) //current nos da el valor actual de esa referencia
+            if(element) observer.observe(element) //current nos da el valor actual de esa referencia
             })
 
             return () => observer && observer.disconnect()
