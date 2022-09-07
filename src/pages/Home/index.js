@@ -1,5 +1,4 @@
-import React, {useState} from "react"
-import { useLocation} from "wouter"
+import React from "react"
 import './index.css';
 import ListOfGifs from "../../components/ListOfGifs";
 import {useGifs} from '../../hooks/useGifs'
@@ -8,21 +7,16 @@ import SearchForm from "../../components/SearchForm";
 import { Helmet } from "react-helmet";
 
 export default function Home(){
-    const [path, pushLocation] = useLocation()
-    const {loading, gifs} = useGifs()
+    const {gifs} = useGifs()
 
-    const handleSubmit = (({keyword}) => {
-        //navegar a otra ruta
-        pushLocation(`/search/${keyword}`)
-    }, [pushLocation])
-
+    
     return(
         <>
             <Helmet>
                 <title>Home | Giffy</title>
             </Helmet>
             <header  className="o-headers">
-                <SearchForm onSubmit ={handleSubmit}/>
+                <SearchForm/>
             </header>
             <div className="App-main">
                 <div className="App-results">

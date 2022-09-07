@@ -29,6 +29,7 @@ export function useGifs ({keyword} = {keyword: null}) {
         if (page === INITIAL_PAGE) return
 
         setLoadingNextPage(true)
+        
         getGifs({keyword: keywordToUse, page})
             .then(nextGifs =>{
                 setGifs(prevGifs => prevGifs.concat(nextGifs))

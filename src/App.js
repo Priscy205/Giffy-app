@@ -1,13 +1,11 @@
 import React from 'react';
 import './App.css';
 import SearchResults from './pages/SearchResults'
-import Home from './pages/Home'
 import Detail from './pages/Detail'
 import logo from './assets/logo.png'
 import StaticContext from './context/StaticContext'
 import {GifsContextProvider} from './context/GifsContext'
 import {Link, Route } from "wouter"
-import { isCompositeComponentWithType } from 'react-dom/test-utils';
 import { Suspense } from 'react';
 
 const HomePage = React.lazy(()=>import('./pages/Home'))
@@ -47,6 +45,6 @@ export default function App() {
       </Suspense>
     </div>
     </StaticContext.Provider>
-  );
+  )
 }
  
