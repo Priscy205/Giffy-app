@@ -30,7 +30,7 @@ export function useGifs ({keyword, rating} = {keyword: null}) {
 
         setLoadingNextPage(true)
         
-        getGifs({keyword: keywordToUse, page})
+        getGifs({keyword: keywordToUse, rating, page})
             .then(nextGifs =>{
                 setGifs(prevGifs => prevGifs.concat(nextGifs))
                 setLoadingNextPage(false)

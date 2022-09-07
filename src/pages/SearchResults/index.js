@@ -9,8 +9,8 @@ import SearchForm from '../../components/SearchForm'
 
 
 export default function SearchResults ({params}){
-    const {keyword} = params
-    const {loading, gifs, setPage} = useGifs({keyword})
+    const {keyword, rating ='g'} = params   //usamos rating para filtrar los estados de búsqueda
+    const {loading, gifs, setPage} = useGifs({keyword, rating})
     const externalRef = useRef()
     const {isNearScreen} = useNearScreen({externalRef: loading ? null : externalRef, once: false})
 
@@ -34,7 +34,7 @@ export default function SearchResults ({params}){
                 <meta name="rating" content="General"/>
             </Helmet>
             <header  className="o-headers">
-                <SearchForm/>
+                <SearchForm initialKeyword={keyword} initialRating={rating}/>
             </header>
             <h3 className = "App-title">{decodeURI (keyword)}</h3>
             <ListOfGifs gifs={gifs}/>
