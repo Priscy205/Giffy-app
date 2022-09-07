@@ -12,7 +12,7 @@ function SearchForm(){
     const handleSubmit = evt => {
         evt.preventDefault()
         //navegar a otra ruta
-        pushLocation(`/search/${keyword}`)
+        pushLocation(`/search/${keyword}/${rating}`)
     }
 
     const handleChange = evt =>{
