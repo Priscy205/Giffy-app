@@ -8,22 +8,21 @@ const ACTIONS = {
     UPDATE_RATING: 'update_rating'
 }
 
-const reducer = (state, action) =>{
-    switch (action.type) {
-        case ACTIONS.UPDATE_KEYWORD:
-          return {
-            ...state,
+const ACTIONS_REDUCERS = {
+    [ACTIONS.UPDATE_KEYWORD]: (state, action) => ({
+        ...state,
             keyword: action.payload,
             times: state.times + 1
-        }  
-        case ACTIONS.UPDATE_RATING:
-          return {
-            ...state,
+    }),
+    [ACTIONS.UPDATE_RATING]: (state, action) => ({
+        ...state,
             rating: action.payload
-        }  
-        default:
-            return state
-    }
+    })
+}
+
+const reducer = (state, action) =>{
+   const actionReducer = ACTIONS_REDUCERS[action.type]
+   return actionReducer ? actionReducer(state, action): state
 }
 
 
