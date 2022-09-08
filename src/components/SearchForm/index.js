@@ -3,21 +3,27 @@ import { useLocation} from "wouter"
 
 const RATINGS = ['g', 'pg', 'pg-13', 'r']
 
+const ACTIONS = {
+    UPDATE_KEYWORD: 'update_keyword',
+    UPDATE_RATING: 'update_rating'
+}
+
 const reducer = (state, action) =>{
-    if (action.type === 'update_keyword'){
-        return {
+    switch (action.type) {
+        case ACTIONS.UPDATE_KEYWORD:
+          return {
             ...state,
             keyword: action.payload,
             times: state.times + 1
-        }
-    } else if (action.type === 'update_rating'){
-        return{
+        }  
+        case ACTIONS.UPDATE_RATING:
+          return {
             ...state,
             rating: action.payload
-        }
+        }  
+        default:
+            return state
     }
-
-    return state
 }
 
 
@@ -33,7 +39,7 @@ export default function SearchForm({initialKeyword= '', initialRating='g'}){
     const [path, pushLocation] = useLocation()
 
     const handleChange = (evt) =>{
-        dispatch({type: 'update_keyword', payload: evt.target.value})
+        dispatch({type: ACTIONS.UPDATE_KEYWORD, payload: evt.target.value})
     }
 
     const handleSubmit = (evt) => {
@@ -43,7 +49,7 @@ export default function SearchForm({initialKeyword= '', initialRating='g'}){
     }
 
     const handleChangeRating = (evt) =>{
-        dispatch({type: 'update_rating', payload: evt.target.value})
+        dispatch({type: ACTIONS.UPDATE_RATING, payload: evt.target.value})
     }
 
 
